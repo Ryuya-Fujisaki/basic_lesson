@@ -5,11 +5,15 @@ import './App.css';
 const App: React.FC = () => {
   const [status, setStatus] = useState<string | number>("text");
   const [input, setInput] = useState("");
+  const [counter, setCounter] = useState(0);
+  const [display, setDisplay] = useState(true);
   const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInput(e.target.value);
   }
-  const [counter, setCounter] = useState(0);
-
+  useEffect(() => {
+    console.log("useEffect in App involed !");
+    document.title = `current value is ${counter}`;
+  }, [counter]);
   return (
     <div className="App">
       <header className="App-header">
